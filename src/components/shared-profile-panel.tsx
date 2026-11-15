@@ -31,11 +31,11 @@ export default function SharedProfilePanel({
       </div>
       {loadError && <p className="profile-load-error" role="status">Shared profile details could not be loaded.</p>}
       <section className="profile-section" aria-labelledby="profile-about-title">
-        <h3 id="profile-about-title">About</h3>
+        <h3 id="profile-about-title">About me</h3>
         <p>{profile.about || "No introduction added yet."}</p>
       </section>
       <section className="profile-section" aria-labelledby="profile-skills-title">
-        <h3 id="profile-skills-title">Skills</h3>
+        <h3 id="profile-skills-title">Areas of focus</h3>
         {skills.length > 0 ? (
           <ul className="profile-skills">
             {skills.map((skill) => <li key={skill}>{skill}</li>)}
@@ -43,7 +43,7 @@ export default function SharedProfilePanel({
         ) : <p>No skills added yet.</p>}
       </section>
       <section className="profile-section" aria-labelledby="profile-links-title">
-        <h3 id="profile-links-title">Links</h3>
+        <h3 id="profile-links-title">Find me online</h3>
         {links.length > 0 ? (
           <ul className="profile-links">
             {links.map(({ label, href }) => <li key={label}><a href={href}>{label}</a></li>)}

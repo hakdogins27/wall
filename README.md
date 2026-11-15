@@ -27,7 +27,7 @@ npm run dev
 
 Open <http://localhost:3000>. Without Supabase settings, the page shows an honest unavailable state and does not display sample posts or claim to save messages.
 
-Follow [the Supabase setup guide](docs/setup.md) before adding credentials. The seven SQL migrations in `supabase/migrations/` are applied to the configured Wall project. For a new Supabase project, follow the setup guide and apply them in filename order.
+Follow [the Supabase setup guide](docs/setup.md) before adding credentials. The eight SQL migrations in `supabase/migrations/` are applied to the configured Wall project. For a new Supabase project, follow the setup guide and apply them in filename order.
 
 ## Checks
 

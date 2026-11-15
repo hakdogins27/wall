@@ -31,7 +31,6 @@ export default function ProfileView({ profile: initialProfile, loadError: initia
         <div className="profile-hero-identity">
           <ProfileAvatar profile={profile} className="profile-hero-avatar" />
           <div className="profile-hero-name">
-            <p className="panel-label">Shared profile</p>
             <h1 id="profile-view-title">{profile.display_name}</h1>
           </div>
           <a className="profile-view-edit" href="/profile/edit">Edit profile</a>
@@ -44,17 +43,17 @@ export default function ProfileView({ profile: initialProfile, loadError: initia
 
       <div className="profile-timeline-content">
         <aside className="profile-details-card" id="profile-details" aria-labelledby="profile-details-title">
-          <h2 id="profile-details-title">Personal details</h2>
+          <h2 id="profile-details-title">About {profile.display_name}</h2>
           <section className="profile-view-section" aria-labelledby="profile-view-about">
-            <h3 id="profile-view-about">About</h3>
+            <h3 id="profile-view-about">Introduction</h3>
             <p>{profile.about || "No introduction added yet."}</p>
           </section>
           <section className="profile-view-section" aria-labelledby="profile-view-skills">
-            <h3 id="profile-view-skills">Skills</h3>
+            <h3 id="profile-view-skills">Areas of focus</h3>
             {skills.length > 0 ? <ul className="profile-skills">{skills.map((skill) => <li key={skill}>{skill}</li>)}</ul> : <p>No skills added yet.</p>}
           </section>
           <section className="profile-view-section" aria-labelledby="profile-view-links">
-            <h3 id="profile-view-links">Links</h3>
+            <h3 id="profile-view-links">Find me online</h3>
             {links.length > 0 ? <ul className="profile-view-links">{links.map(({ label, href }) => <li key={label}><a href={href}>{label}</a></li>)}</ul> : <p>No links added yet.</p>}
           </section>
         </aside>

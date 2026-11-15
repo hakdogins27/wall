@@ -100,3 +100,5 @@ Anthony then requested a separate Profile editing page and explicitly chose anyo
 Latest profile navigation: left-side name opens a view-first /profile page matching the main Wall shell; Edit profile opens /profile/edit in the same shell. Keep public shared editing with no login.
 
 Latest visual direction supersedes the profile three-column shell: wide profile header with large avatar/name, then personal details beside the shared Wall feed. Use a two-column edit form on wide screens, one column on mobile. Columns fill available height above the footer. Header hierarchy includes branding, Wall/Profile/About navigation and a separate Notifications action.
+
+Anthony approved mobile-only hamburger navigation and a feed-only Wall at1180px and below, with details accessible through the profile About section. He removed the Shared profile hero label and approved professional wording grounded in his existing skills. Live notifications cover actual posts, comments and likes with relative timestamps. Mobile uses a separate right-side drawer and per-browser persistent unread badge, cleared by checking the drawer and increased by later activity.

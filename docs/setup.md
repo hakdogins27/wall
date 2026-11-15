@@ -8,7 +8,7 @@
 ## Prepare the database
 
 1. Open the selected Supabase project's SQL Editor.
-2. On a new project, review and run all seven SQL files in `supabase/migrations` in filename order. They create posts, restricted image Storage, the shared profile, interactions and capability-protected post edit/removal. All exposed tables keep RLS enabled.
+2. On a new project, review and run all eight SQL files in `supabase/migrations` in filename order. They create posts, restricted image Storage, the shared profile, interactions, capability-protected post edit/removal and a read-only activity feed. All exposed tables keep RLS enabled.
 3. Confirm the SQL completed before starting the app. Do not rerun it on a project where `public.posts` already exists without first reviewing that database.
 
 The prepared migration was applied on 2026-11-15 to the owner-approved Wall project (`cykohtqakrzndsmnokxi`), under HAKDOGINS in Singapore. Supabase quoted $0/month; no paid upgrades or features were enabled. RLS remains enabled. Anonymous post inserts allow only body and optional image_path; profile updates allow only its seven editable fields. The table is included in `supabase_realtime`. Do not rerun the migration on this project.
@@ -66,3 +66,9 @@ Paired editor fields stay equal in height as their contents grow. Photo removal 
 Comment and long-caption **See more** open the full post in a responsive modal. Long feed captions show a preview; the modal contains the full text and live comments. Comments remain public and limited to 280 characters. Like toggles to **Unlike** for posts liked with a token saved in this browser tab. Older likes without a token remain visible but cannot be removed. The post-level Share action is removed; the composer’s **Share** button still publishes a post.
 
 **Edit post** and **Delete post** are available only for posts created with this browser capability. Edit validates 1–280 code points and changes only the caption through `edit_post_with_capability`; the post ID, timestamp and image stay unchanged. Both edit and delete require the same unguessable per-post token stored in this browser’s localStorage. The database stores only its hash in a private RLS-protected table; direct table UPDATE/DELETE remain denied, and edits sync to connected feeds in Realtime. Existing posts without capabilities cannot be edited or deleted. Clearing browser storage loses those capabilities. Deleting a post cascades comments and likes but leaves its public image object for owner cleanup.
+
+## Responsive notifications
+
+Apply migration20261115123043_add_wall_notifications.sql after the seven previous migrations on a new project. It adds future-like creation timestamps and an anonymous read-only security_invoker activity view. Existing likes lack known times and do not receive fake notifications. Posts, comments and likes remain the existing Realtime event sources; no view is added to the publication.
+
+At1180px and narrower, the main Wall hides both side panels. Open the hamburger menu for navigation and About me, or the bell for the right-side live notification drawer. Its badge clears on checking and returns for new activity. Read status persists only in that browser/origin, separately from other visitors.

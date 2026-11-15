@@ -242,3 +242,11 @@ Migration `20261115120006_edit_post_with_capability.sql` adds one narrow anonymo
 ## Approved production hosting — 2026-11-15
 
 Anthony authorized a private GitHub repository `hakdogins27/wall`, production Vercel hosting on the existing Hobby team, and the free `wall-anthony.vercel.app` domain. Git pushes to main deploy automatically. Vercel receives only the public Supabase URL/publishable key; local environment files, Vercel linkage and credentials stay ignored. Pin Node to >=22.20.0 <23: an unbounded >= range caused Vercel to override the22.x project setting with26.x in the first production build. Localhost capability storage does not automatically migrate across origins.
+
+## Mobile navigation and live notification read state — 2026-11-15
+
+The Wall shows both side panels only above1180px; smaller screens show the feed, a hamburger navigation dialog and a separate bell opening a right-side notification drawer. Profile details remain on /profile#profile-details. The profile hero drops its shared-profile eyebrow; introduction, existing technical focus and actual portfolio/GitHub links remain editable. The owner approved polishing About/skills without inventing credentials.
+
+Use a read-only security_invoker wall_notifications view over actual posts, comments and timestamped likes instead of duplicating events into a new table. One provider listens to changes on the three existing published tables and reloads a stable latest20 list plus exact unread count; reconnects reload canonical data. Adding nullable like.created_at before its default keeps historical likes unknown instead of inventing notification times. Old un-timestamped likes are excluded. No shares are fabricated.
+
+Read state is a validated timestamp/id cursor stored per browser/origin in localStorage, with memory fallback when writes are denied. Opening/checking the drawer marks current activity read; arrivals while open are read, and future arrivals after closing increase the badge. Other visitors' read state is independent. Cursor metadata contains no post text or capability secrets. No login, RLS weakening or paid service is introduced.

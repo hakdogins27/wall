@@ -9,6 +9,8 @@ export type Post = {
 export type PostComment = { id: string; post_id: string; body: string; created_at: string };
 export type PostActivity = { post_id: string; like_count: number; comment_count: number; liked: boolean };
 
+export type WallNotification = { id: string; post_id: string; kind: "post" | "comment" | "like"; body: string | null; created_at: string };
+
 export type WallProfileRow = {
   id: 1;
   display_name: string;
@@ -41,8 +43,8 @@ export type Database = {
         Relationships: [];
       };
       post_likes: {
-        Row: { id: string; post_id: string; visitor_id: string };
-        Insert: { post_id: string; visitor_id: string; id?: never };
+        Row: { id: string; post_id: string; visitor_id: string; created_at: string | null };
+        Insert: { post_id: string; visitor_id: string; id?: never; created_at?: never };
         Update: Record<string, never>;
         Relationships: [];
       };
@@ -78,6 +80,7 @@ export type Database = {
       };
     };
     Views: {
+      wall_notifications: { Row: WallNotification; Relationships: [] };
       post_activity: { Row: { post_id: string; like_count: number; comment_count: number }; Relationships: [] };
     };
     Functions: {
