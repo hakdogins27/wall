@@ -2,6 +2,14 @@
 
 Wall is a small public message board built with Next.js, React, Tailwind CSS, shadcn/ui and Supabase. Visitors can post without signing in. Every post uses the shared display name **Anthony Mendoza**; that label is a product convention, not an authorship claim.
 
+## Deployment
+
+Production URL: <https://wall-anthony.vercel.app>
+
+Source: <https://github.com/hakdogins27/wall> (private). Vercel project `wall-anthony` uses the free Hobby plan and deploys the `main` branch. Only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are configured in Vercel; `.env.local` stays outside Git.
+
+Post editing/deletion credentials are browser- and origin-specific. Keys saved on localhost do not transfer automatically to the production domain.
+
 ## Run locally
 
 Use Node.js 22.20.0 and npm 10.9 or newer.
