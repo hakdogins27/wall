@@ -238,3 +238,7 @@ Replace the post-success green message and connected Live badge with relative po
 ## Capability-protected caption edits — 2026-11-15
 
 Migration `20261115120006_edit_post_with_capability.sql` adds one narrow anonymous edit RPC. It validates the same nonblank 1–280 code-point caption rule and updates only `posts.body` when the post ID matches the SHA-256 hash of the browser-held deletion capability. It leaves the generated ID, `created_at`, `image_path` and all other columns untouched, returns no row on a failed capability check, and grants RPC execution only to anon. RLS stays enabled and direct table UPDATE remains denied. The client never stores the post text in browser storage; successful caption edits are broadcast through the existing posts Realtime stream.
+
+## Approved production hosting — 2026-11-15
+
+Anthony authorized a private GitHub repository `hakdogins27/wall`, production Vercel hosting on the existing Hobby team, and the free `wall-anthony.vercel.app` domain. Git pushes to main deploy automatically. Vercel receives only the public Supabase URL/publishable key; local environment files, Vercel linkage and credentials stay ignored. Pin Node to >=22.20.0 <23: an unbounded >= range caused Vercel to override the22.x project setting with26.x in the first production build. Localhost capability storage does not automatically migrate across origins.
