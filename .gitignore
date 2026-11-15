@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+build/
+coverage/
+.vercel/
+*.tsbuildinfo
+.env*
+!.env.example
+npm-debug.log*
+
+# Local files and private credentials
+.DS_Store
+*.log
+*.pem
+*.key
+.envrc
+supabase/.temp/
